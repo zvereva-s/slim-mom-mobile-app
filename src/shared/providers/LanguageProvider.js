@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { en } from "../../assets/languages/en";
-import { ua } from "../../assets/languages/ua";
-import { ru } from "../../assets/languages/ru";
+import { en } from "../../../assets/languages/en";
+import { ua } from "../../../assets/languages/ua";
+import { ru } from "../../../assets/languages/ru";
 
 export const LanguageContext = React.createContext({
   language: "ua",
