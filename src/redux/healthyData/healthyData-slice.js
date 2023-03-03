@@ -10,7 +10,7 @@ import {
   summaryOfDayRequest,
 } from "../healthyData/healthyData-operations";
 
-import { pending, rejected } from "../../shared/services/utils/utils";
+import { pending, rejected } from "../../shared/utils/utils";
 
 const initialState = {
   healthyData: {},

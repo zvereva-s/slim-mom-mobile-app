@@ -5,7 +5,7 @@ import {
   getProductListRequest,
 } from "./diary-operations";
 
-import { rejected } from "../../shared/services/utils/utils";
+import { rejected } from "../../shared/utils/utils";
 
 const initialState = {
   date: new Date(),

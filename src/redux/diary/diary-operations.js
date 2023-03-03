@@ -1,9 +1,9 @@
-import { createOperation } from "../../shared/services/utils/utils";
+import { createOperation } from "../../shared/utils/utils";
 import {
   addProduct,
   deleteProduct,
   getProductList,
-} from "../../shared/services/apis/diary";
+} from "../../shared/api/diary";
 
 export const getProductListRequest = createOperation(
   "diary/getProductList",

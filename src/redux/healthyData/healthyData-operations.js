@@ -1,6 +1,6 @@
-import { createOperation } from "../../shared/services/utils/utils";
-import { patchDailyRateByUserId } from "../../shared/services/apis/daily-rate";
-import { getSummaryOfDay } from "../../shared/services/apis/summary";
+import { createOperation } from "../../shared/utils/utils";
+import { patchDailyRateByUserId } from "../../shared/api/daily-rate";
+import { getSummaryOfDay } from "../../shared/api/summary";
 
 export const dailyRateUserRequest = createOperation(
   "healthyDate/dailyRateUser",

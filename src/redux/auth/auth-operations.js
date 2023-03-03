@@ -1,12 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { createOperation } from "../../shared/services/utils/utils";
-import {
-  signin,
-  signup,
-  logout,
-  getCurrent,
-} from "../../shared/services/apis/auth";
+import { createOperation } from "../../shared/utils/utils";
+import { signin, signup, logout, getCurrent } from "../../shared/api/auth.js";
 
 export const signupRequest = createOperation("auth/signup", signup);
 export const signinRequest = createOperation("auth/signin", signin);

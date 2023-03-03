@@ -6,7 +6,7 @@ import {
   getCurrentRequest,
 } from "../auth/auth-operations";
 
-import { pending, rejected } from "../../shared/services/utils/utils";
+import { pending, rejected } from "../../shared/utils/utils";
 
 const initialState = {
   user: {},
