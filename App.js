@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import "expo-dev-menu";
-import { LogBox } from "react-native";
+import { LogBox, Text } from "react-native";
 
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -9,13 +9,19 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "./src/shared/providers/ThemeProvider";
 import { LanguageProvider } from "./src/shared/providers/LanguageProvider";
 
-import { store } from "./src/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+
+import { store, persistor } from "./src/redux/store";
 
 import Main from "./src/screens/MainScreens/Main";
+import LangSwitcher from "./src/shared/components/LangSwitcher/LangSwitcher";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Roboto: require("./assets/fonts/Roboto/Roboto-Regular.ttf"),
+    MulishBlack: require("./assets/fonts/Mulish/Mulish-Black.ttf"),
+    MulishLight: require("./assets/fonts/Mulish/Mulish-Light.ttf"),
+    MulishRegular: require("./assets/fonts/Mulish/Mulish-Regular.ttf"),
+    MulishExtraLight: require("./assets/fonts/Mulish/Mulish-ExtraLight.ttf"),
   });
 
   useEffect(() => {
@@ -34,15 +40,19 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  LogBox.ignoreLogs(["EventEmitter.removeListener"]);
 
   return (
-    <Provider store={store}>
-      <LanguageProvider>
-        <ThemeProvider>
-          <Main onLayoutRootView={onLayoutRootView} />
-        </ThemeProvider>
-      </LanguageProvider>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+          <LanguageProvider>
+            <ThemeProvider>
+              <Main onLayoutRootView={onLayoutRootView} />
+              <LangSwitcher />
+            </ThemeProvider>
+          </LanguageProvider>
+        </PersistGate>
+      </Provider>
+    </>
   );
 }
