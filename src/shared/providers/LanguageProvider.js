@@ -30,9 +30,8 @@ export const LanguageProvider = ({ children }) => {
   const defaultLang = {
     language,
     t,
-    setLangSchema: (e) => {
-      const chooseLang = e.target.textContent.toLowerCase();
-      setLanguage(chooseLang);
+    setLangSchema: (value) => {
+      setLanguage(value.toLowerCase());
     },
   };
 

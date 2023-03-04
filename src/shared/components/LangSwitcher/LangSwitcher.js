@@ -1,47 +1,121 @@
-import { View, Text, StyleSheet } from "react-native";
+import { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import useTranslate from "../../hooks/useTranslate";
 import useTheme from "../../hooks/useTheme";
 
+import * as themeVariables from "../../../../assets/styleVariables/variables";
+
 export default function LangSwitcher() {
-  const { lang, setLangSchema } = useTranslate();
+  const { setLangSchema } = useTranslate();
   const { theme } = useTheme();
 
+  const [choosedLang, setChoosedLang] = useState("UA");
+
+  const handleOnPress = (e) => {
+    setChoosedLang(e._dispatchInstances.memoizedProps.children);
+    setLangSchema(e._dispatchInstances.memoizedProps.children);
+  };
+  const handleTernaryOperatorLang = (l, conditionOne, conditionTwo) => {
+    return choosedLang === l ? conditionOne : conditionTwo;
+  };
+  const activeStyleOfBtn = (l) => {
+    return handleTernaryOperatorLang(
+      l,
+      themeVariables[theme].colorSwitcherBackground,
+      "transparent"
+    );
+  };
+  const activeStyleTextLang = (l) => {
+    return handleTernaryOperatorLang(l, "MulishBlack", "MulishLight");
+  };
+
   return (
-    <View style={styles.langBox}>
-      <Text style={styles.lang} onPress={(e) => setLangSchema(e)}>
-        EN
-      </Text>
-      <Text style={styles.lang} onPress={(e) => setLangSchema(e)}>
-        UA
-      </Text>
-      <Text style={styles.lang} onPress={(e) => setLangSchema(e)}>
-        RU
-      </Text>
+    <View
+      style={{
+        ...styles.langBox,
+        backgroundColor: themeVariables[theme].colorSwitcherThumbBackground,
+      }}
+    >
+      <TouchableOpacity
+        style={{
+          ...styles.btnLang,
+          backgroundColor: activeStyleOfBtn("EN"),
+        }}
+        stylactiveOpacity={0.8}
+      >
+        <Text
+          style={{
+            ...styles.lang,
+            color: themeVariables[theme].colorDark,
+            fontFamily: activeStyleTextLang("EN"),
+          }}
+          onPress={handleOnPress}
+        >
+          EN
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          ...styles.btnLang,
+          backgroundColor: activeStyleOfBtn("UA"),
+        }}
+        stylactiveOpacity={0.8}
+      >
+        <Text
+          style={{
+            ...styles.lang,
+            color: themeVariables[theme].colorDark,
+            fontFamily: activeStyleTextLang("UA"),
+          }}
+          onPress={handleOnPress}
+        >
+          UA
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          ...styles.btnLang,
+          backgroundColor: activeStyleOfBtn("RU"),
+        }}
+        stylactiveOpacity={0.8}
+      >
+        <Text
+          style={{
+            ...styles.lang,
+            color: themeVariables[theme].colorDark,
+            fontFamily: activeStyleTextLang("RU"),
+          }}
+          onPress={handleOnPress}
+        >
+          RU
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   langBox: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
 
-    width: 76,
-    height: 20,
+    width: 100,
+    height: 30,
 
-    borderWidth: 1,
     borderRadius: 20,
-    borderColor: "grey",
+  },
+  btnLang: {
+    justifyContent: "center",
+    alignItems: "center",
+
+    width: 28,
+    height: 28,
+
+    borderRadius: 50,
   },
   lang: {
     fontSize: 10,
-    fontFamily: "MulishExtraLight",
-
-    width: 25,
-    height: 25,
-    borderRadius: 50,
   },
 });
