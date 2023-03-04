@@ -25,7 +25,7 @@ export const dark = {
   colorModalCalories: "#264061",
   colorLine: "#E0E0E0",
   colorPlaceholder: "#E0E0E0",
-  colorText: "#ababab",
+  colorText: "#E0E0E0",
   backgroundSec: "#333333",
 
   colorSwitcherThumbBackground: "rgb(110, 110, 110)",
