@@ -19,6 +19,12 @@ export default function Icon({ type, focused, size, theme, colorProp }) {
     case "arrowBack":
       xml = icons.arrowBackIcon(focused, theme, colorProp);
       break;
+    case "sun":
+      xml = icons.sunIcon();
+      break;
+    case "moon":
+      xml = icons.moonIcon(focused, theme, colorProp);
+      break;
     default:
       xml = "";
   }
