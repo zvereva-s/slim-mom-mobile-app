@@ -3,6 +3,8 @@ import { Text, View } from "react-native";
 import useTranslate from "../../../shared/hooks/useTranslate";
 import useTheme from "../../../shared/hooks/useTheme";
 
+import SignUpForm from "./SignUpForm/SignUpForm";
+
 import BackgroundView from "../../../shared/components/BackgroundView/BackgroundView";
 import LangSwitcher from "../../../shared/components/LangSwitcher/LangSwitcher";
 import SwitcherTheme from "../../../shared/components/SwitcherTheme/SwitcherTheme";
@@ -36,6 +38,7 @@ export default function SignUpScreen() {
         >
           {t.signUpTitle}
         </Text>
+        <SignUpForm />
       </View>
     </BackgroundView>
   );
