@@ -11,7 +11,7 @@ export const light = {
   colorPlaceholder: "#9b9faa80",
   colorText: "#4d5056",
 
-  colorSwitcherThumbBackground: "rgb(197, 255, 135)",
+  colorSwitcherThumbBackground: "#C5FF87",
   colorSwitcherBackground: "#fff",
 };
 export const dark = {
@@ -28,6 +28,6 @@ export const dark = {
   colorText: "#E0E0E0",
   backgroundSec: "#333333",
 
-  colorSwitcherThumbBackground: "rgb(110, 110, 110)",
-  colorSwitcherBackground: "rgb(145, 145, 233)",
+  colorSwitcherThumbBackground: "#6E6E6E",
+  colorSwitcherBackground: "#9191E9",
 };
