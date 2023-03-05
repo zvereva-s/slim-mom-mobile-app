@@ -1,7 +1,16 @@
+import Toast from "react-native-toast-message";
+
+import { useDispatch } from "react-redux";
+
 import { Text, View } from "react-native";
 
 import useTranslate from "../../../shared/hooks/useTranslate";
 import useTheme from "../../../shared/hooks/useTheme";
+import useAuthState from "../../../shared/hooks/useAuthState";
+
+import { signupRequest } from "../../../redux/auth/auth-operations";
+import { getErrorMessage, notify } from "../../../shared/utils/utils";
+import { toastConfig } from "../../../shared/components/Toast/toastConfig";
 
 import SignUpForm from "./SignUpForm/SignUpForm";
 
@@ -9,11 +18,27 @@ import BackgroundView from "../../../shared/components/BackgroundView/Background
 import LangSwitcher from "../../../shared/components/LangSwitcher/LangSwitcher";
 import SwitcherTheme from "../../../shared/components/SwitcherTheme/SwitcherTheme";
 
+import Loader from "../../../shared/components/Loader/Loader";
+
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 
-export default function SignUpScreen() {
-  const { t } = useTranslate();
+export default function SignUpScreen({ navigation }) {
+  const { t, lang } = useTranslate();
   const { theme } = useTheme();
+
+  const { error, loading } = useAuthState();
+  let errMessage = error && getErrorMessage(error);
+
+  const dispatch = useDispatch();
+
+  const onSubmit = (data) => {
+    const obj = {
+      name: data.default,
+      email: data["email-address"],
+      password: data["visible-password"],
+    };
+    dispatch(signupRequest(obj));
+  };
 
   return (
     <BackgroundView backGdColor={themeVariables[theme].bgColor}>
@@ -28,7 +53,7 @@ export default function SignUpScreen() {
         <LangSwitcher />
         <SwitcherTheme />
       </View>
-      <View style={{ alignItems: "center", paddingVertical: 100 }}>
+      <View style={{ alignItems: "center", paddingVertical: 50 }}>
         <Text
           style={{
             fontSize: 30,
@@ -38,7 +63,10 @@ export default function SignUpScreen() {
         >
           {t.signUpTitle}
         </Text>
-        <SignUpForm />
+        {loading && <Loader bool="true" size="large" />}
+        {!loading && <SignUpForm onSubmit={onSubmit} navigation={navigation} />}
+        {error && notify(errMessage[lang], "error", lang)}
+        <Toast config={toastConfig} />
       </View>
     </BackgroundView>
   );
