@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-import ToastManager, { Toast } from "toastify-react-native";
+import Toast from "react-native-toast-message";
 
 import { en } from "../../../assets/languages/en";
 import { ua } from "../../../assets/languages/ua";
@@ -40,6 +39,13 @@ export const getErrorMessage = (error) => {
   }
 
   switch (errorMessage.split(" ")[5]) {
+    case "400":
+      text = {
+        en: "bad request",
+        ru: "Неверный запрос",
+        ua: "Некорректний запит",
+      };
+      break;
     case "401":
       text = {
         en: "Not Authorized",
@@ -55,27 +61,70 @@ export const getErrorMessage = (error) => {
       };
       break;
     default:
-      text = "Something goes wrong";
+      text = {
+        en: "Something goes wrong",
+        ua: "Щось пішло не так",
+        ru: "Что-то пошло не так",
+      };
   }
   return text;
 };
 
-export const notify = (message, type) => {
+export const notify = (message, type, lang) => {
   switch (type) {
     case "error":
-      Toast.error(message);
+      Toast.show({
+        type: "errorToast",
+        text1: {
+          en: "Ups...we have a problem ☹️",
+          ua: "Упс...у нас проблема ☹️",
+          ru: "Упс...у нас проблема ☹️",
+        }[lang],
+        text2: message,
+        visibilityTime: 5000,
+        autoHide: true,
+      });
+      break;
+    case "warning":
+      Toast.show({
+        type: "warningToast",
+        text1: {
+          en: "Atantion...we have to solve it",
+          ua: "Увага...треба це вирішити",
+          ru: "Внимание...это нужно решить",
+        }[lang],
+        text2: message,
+        visibilityTime: 5000,
+        autoHide: true,
+      });
       break;
     case "info":
-      Toast.info(message);
+      Toast.show({
+        type: "infoToast",
+        text1: {
+          en: "Hey...we have news",
+          ua: "Хей...ми маємо новини",
+          ru: "Хей...тут есть новости",
+        }[lang],
+        text2: message,
+        visibilityTime: 5000,
+        autoHide: true,
+      });
       break;
     case "success":
-      Toast.success(message);
+      Toast.show({
+        type: "successToast",
+        text1: {
+          en: "Yep! It's ok!",
+          ua: "Йеп! Все вийшло",
+          ru: "Все получилось",
+        }[lang],
+        text2: message,
+        visibilityTime: 5000,
+        autoHide: true,
+      });
       break;
-    default:
-      Toast.info(message);
   }
-
-  return <ToastManager />;
 };
 
 export const adviceActivity = ({ value }, lang) => {
