@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import "expo-dev-menu";
 import "react-native-reanimated";
 import "react-native-gesture-handler";
+
 import { LogBox, Text } from "react-native";
 
 import * as Font from "expo-font";
@@ -43,4 +44,3 @@ export default function App() {
     </Provider>
   );
 }
-// onLayoutRootView = { onLayoutRootView };
