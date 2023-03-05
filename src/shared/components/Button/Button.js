@@ -12,14 +12,14 @@ export default function Button({ text, type, func }) {
         borderRadius: 100,
 
         borderWidth: 3,
-        borderColor: "#FC842D",
+        borderColor: "#9b9faa80",
 
         justifyContent: "center",
         alignItems: "center",
       };
       btnTitle = {
         ...styles.btnTitle,
-        color: "#FC842D",
+        color: "#9b9faa80",
       };
       break;
     }
