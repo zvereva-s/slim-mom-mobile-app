@@ -11,12 +11,12 @@ export default function SignInForm() {
     <>
       <CustomInput
         placeholder={t.login}
-        keyboardType="email"
+        keyboardType="email-address"
         pattern="/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/"
       />
       <CustomInput
         placeholder={t.password}
-        keyboardType="password"
+        keyboardType="default"
         secureTextEntryStart={true}
         link={true}
       />

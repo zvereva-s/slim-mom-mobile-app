@@ -11,17 +11,17 @@ export default function SignUpForm() {
     <>
       <CustomInput
         placeholder={t.name}
-        keyboardType="name"
+        keyboardType="default"
         pattern="/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/"
       />
       <CustomInput
         placeholder={t.email}
-        keyboardType="email"
+        keyboardType="email-address"
         pattern="/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/"
       />
       <CustomInput
         placeholder={t.password}
-        keyboardType="password"
+        keyboardType="default"
         secureTextEntryStart={true}
         link={true}
       />
