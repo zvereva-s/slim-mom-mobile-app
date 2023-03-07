@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Appearance } from "react-native";
 
 export const ThemeContext = React.createContext({
   isDark: false,
@@ -7,7 +8,9 @@ export const ThemeContext = React.createContext({
 });
 
 export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(false);
+  const colorScheme = Appearance.getColorScheme();
+
+  const [isDark, setIsDark] = useState(colorScheme === "dark");
 
   const defaultTheme = {
     isDark,

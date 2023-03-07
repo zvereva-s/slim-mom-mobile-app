@@ -41,9 +41,12 @@ export const ru = {
   high: "высокая",
   extreme: "очень высокая",
   calculatorBtn: "Начни терять вес",
+  mobileCalendarTitle: "КАЛЕНДАРЬ",
 
   //DIARY
+  mobileDiaryTitle: "ДНЕВНИК",
   //ADD FORM
+  mobileAddDiaryTitle: "ДОБАВИТЬ ПРОДУКТ",
   addFormInput: "Введите название продукта",
   inputWeight: "Грамм",
   g: "g",

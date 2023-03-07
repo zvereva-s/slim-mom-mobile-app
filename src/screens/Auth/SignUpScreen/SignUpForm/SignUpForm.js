@@ -1,4 +1,4 @@
-import { Pressable, View } from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
 
 import useForm from "../../../../shared/hooks/useForm";
 import useTranslate from "../../../../shared/hooks/useTranslate";
@@ -47,12 +47,15 @@ export default function SignUpForm({ onSubmit, navigation }) {
           <Button text={t.signUpBtn} func={handleSubmit} />
         </View>
         <View style={{ width: "100%", marginTop: 20 }}>
-          <Button
-            text={t.signInBtn}
-            type="disabled"
-            func={() => navigate("Sign In")}
-          />
+          <Button text={t.signInBtn} type="disabled" />
         </View>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{ marginTop: 20 }}
+          onPress={() => navigate("Sign In")}
+        >
+          <Text>Have acccount? Sign In</Text>
+        </TouchableOpacity>
       </View>
     </>
   );

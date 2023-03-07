@@ -13,7 +13,7 @@ export default function Main() {
   const dispatch = useDispatch();
   // const { isLogin } = useAuthState();
 
-  const isLogin = false;
+  const isLogin = true;
 
   const routing = useRoute(isLogin);
 

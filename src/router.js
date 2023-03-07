@@ -6,6 +6,7 @@ import { BlurView } from "expo-blur";
 import { StyleSheet, View } from "react-native";
 
 import useTheme from "./shared/hooks/useTheme";
+import useDevice from "./shared/hooks/useDevice";
 
 import SignInScreen from "./screens/Auth/SignInScreen/SignInScreen";
 import SignUpScreen from "./screens/Auth/SignUpScreen/SignUpScreen";
@@ -15,17 +16,20 @@ import CalendarScreen from "./screens/MainScreens/CalendarScreen/CalendarScreen"
 import AddProductScreen from "./screens/MainScreens/AddProductScreen/AddProductScreen";
 
 import LangSwitcher from "./shared/components/LangSwitcher/LangSwitcher";
+import SwitcherTheme from "./shared/components/SwitcherTheme/SwitcherTheme";
 
 import Icon from "./shared/components/Icon/Icon";
 
 import * as themeVariables from "../assets/styleVariables/variables";
-import { pureFinalPropsSelectorFactory } from "react-redux/es/connect/selectorFactory";
+import useTranslate from "./shared/hooks/useTranslate";
 
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
 
 export default function useRoute(isLogin) {
-  const { theme } = useTheme();
+  const { theme, isDark } = useTheme();
+  const { t } = useTranslate();
+  const { OS } = useDevice();
 
   if (!isLogin) {
     return (
@@ -39,7 +43,7 @@ export default function useRoute(isLogin) {
         />
         <AuthStack.Screen
           options={{
-            headerShown: pureFinalPropsSelectorFactory,
+            headerShown: false,
           }}
           name="Sign In"
           component={SignInScreen}
@@ -51,20 +55,41 @@ export default function useRoute(isLogin) {
   return (
     <MainTab.Navigator
       screenOptions={{
-        tabBarActiveBackgroundColor: themeVariables[theme].bgColor,
-        tabBarInactiveBackgroundColor: themeVariables[theme].bgColor,
+        headerLeft: () => (
+          <View style={{ paddingLeft: 15 }}>
+            <LangSwitcher />
+          </View>
+        ),
+        headerRight: () => (
+          <View style={{ paddingRight: 30 }}>
+            <SwitcherTheme />
+          </View>
+        ),
+        headerTitleStyle: {
+          fontFamily: "MulishBlack",
+          color: themeVariables[theme].colorText,
+          fontSize: 13,
+        },
+        headerStyle: {
+          backgroundColor: themeVariables[theme].bgColor,
+        },
+        headerTitleAlign: "center",
+        tabBarIcon: <LangSwitcher />,
         tabBarBackground: () => (
           <BlurView
-            tint={theme === "dark" ? "dark" : "light"}
+            tint={isDark ? "dark" : "light"}
             intensity={100}
-            style={StyleSheet.absoluteFill}
+            style={{
+              ...StyleSheet.absoluteFill,
+              backgroundColor: themeVariables[theme].bgColor,
+            }}
           >
             <View
               style={{
-                height: 96,
                 backgroundColor: themeVariables[theme].bgColor,
+                flex: 1,
               }}
-            />
+            ></View>
           </BlurView>
         ),
       }}
@@ -73,30 +98,94 @@ export default function useRoute(isLogin) {
         name="Diary"
         component={DiaryScreen}
         options={{
+          title: t.mobileDiaryTitle,
           headerShown: true,
           tabBarShowLabel: false,
-          tabBarIcon: () => <Icon type="sun" />,
+          tabBarStyle: {
+            height: 80,
+            paddingVertical: 10,
+          },
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                borderWidth: 1,
+                borderColor: "transparent",
+                justifyContent: "center",
+                alignItems: "center",
+                flex: 1,
+                width: 50,
+                height: 50,
+              }}
+            >
+              <Icon type="diary" theme={theme} focused={focused} />
+            </View>
+          ),
         }}
       />
       <MainTab.Screen
         name="Calendar"
         component={CalendarScreen}
         options={{
+          title: t.mobileCalendarTitle,
           headerShown: true,
-          tabBarShowLabel: true,
-          tabBarStyle: { position: "absolute" },
-          tabBarIcon: () => <Icon type="sun" />,
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            height: 80,
+            paddingVertical: 10,
+          },
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                borderWidth: 1,
+                borderColor: "transparent",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                width: 50,
+                height: 50,
+              }}
+            >
+              <Icon type="calendarMenu" theme={theme} focused={focused} />
+            </View>
+          ),
         }}
       />
       <MainTab.Screen
-        name="AddProduct"
+        name="Add Product"
         component={AddProductScreen}
-        tabBarStyle={{ backgroundColor: "red" }}
+        tabBarStyle={{
+          color: themeVariables[theme].colorDark,
+          paddingHorizontal: 20,
+          paddingVertical: 20,
+        }}
         options={{
+          title: t.mobileAddDiaryTitle,
           headerShown: true,
-          tabBarShowLabel: true,
-          tabBarStyle: { position: "absolute" },
-          tabBarIcon: () => <Icon type="sun" />,
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            height: 80,
+            paddingVertical: 10,
+          },
+          tabBarIcon: ({ focused }) => {
+            const mainColor = theme === "light" ? "#C5FF87" : "#9191E9";
+            const bgColor = focused ? "#ffa40b" : mainColor;
+            return (
+              <View
+                style={{
+                  borderWidth: 1,
+                  borderColor: "transparent",
+                  backgroundColor: bgColor,
+                  borderRadius: 50,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: OS === "iOS" ? 40 : 50,
+                  height: OS === "iOS" ? 40 : 50,
+                }}
+              >
+                <Icon type="plus" size={OS === "iOS" ? 30 : 40} />
+              </View>
+            );
+          },
         }}
       />
     </MainTab.Navigator>

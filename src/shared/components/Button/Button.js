@@ -3,9 +3,6 @@ import { StyleSheet, TouchableOpacity, Text } from "react-native";
 export default function Button({ text, type, func }) {
   let btnStyle;
   let btnTitle;
-  let handlePress;
-
-  console.log({ func });
 
   switch (type) {
     case "disabled": {
@@ -25,9 +22,6 @@ export default function Button({ text, type, func }) {
         ...styles.btnTitle,
         color: "#9b9faa80",
       };
-      handlePress = () => {
-        return func;
-      };
       break;
     }
     default: {
@@ -43,9 +37,6 @@ export default function Button({ text, type, func }) {
         alignItems: "center",
       };
       btnTitle = styles.btnTitle;
-      handlePress = (e) => {
-        func(e);
-      };
       break;
     }
   }
@@ -54,7 +45,7 @@ export default function Button({ text, type, func }) {
     <TouchableOpacity
       style={type ? btnStyle : styles.btn}
       activeOpacity={0.8}
-      onPress={handlePress}
+      onPress={type !== "disabled" ? (e) => func(e) : func}
     >
       <Text style={btnTitle}>{text}</Text>
     </TouchableOpacity>

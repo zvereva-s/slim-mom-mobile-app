@@ -41,9 +41,12 @@ export const ua = {
   high: "висока",
   extreme: "дуже висока",
   calculatorBtn: "Розпочни втрачати вагу",
+  mobileCalendarTitle: "КАЛЕНДАР",
 
   //DIARY
+  mobileDiaryTitle: "ЩОДЕННИК",
   //ADD FORM
+  mobileAddDiaryTitle: "ДОДАТИ ПРОДУКТ",
   addFormInput: "Введіть назву продукту",
   inputWeight: "Грам",
   g: "г",

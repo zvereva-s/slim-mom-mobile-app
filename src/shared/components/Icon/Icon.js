@@ -3,7 +3,7 @@ import { SvgXml } from "react-native-svg";
 
 import * as icons from "./icons";
 
-export default function Icon({ type, focused, size, theme, colorProp }) {
+export default function Icon({ type, focused, size, theme, colorProp, OS }) {
   let xml;
 
   switch (type) {
@@ -25,6 +25,13 @@ export default function Icon({ type, focused, size, theme, colorProp }) {
     case "moon":
       xml = icons.moonIcon(focused, theme, colorProp);
       break;
+    case "calendarMenu":
+      xml = icons.calendarMenuIcon(theme, focused);
+      break;
+    case "diary":
+      xml = icons.diaryIcon(theme, focused);
+      break;
+
     default:
       xml = "";
   }

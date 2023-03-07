@@ -38,12 +38,15 @@ export const en = {
   high: "high",
   extreme: "extreme",
   calculatorBtn: "Start losing weight",
+  mobileCalendarTitle: "CALENDAR",
 
   //DAILY CALORIES INFO
   recomendedDaily: "Your recommended daily calorie intake is",
 
   //DIARY
+  mobileDiaryTitle: "DIARY",
   //ADD FORM
+  mobileAddDiaryTitle: "ADD PRODUCT",
   addFormInput: "Type name of the product",
   inputWeight: "Grams",
   g: "г",
