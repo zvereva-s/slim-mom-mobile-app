@@ -1,9 +1,7 @@
 export const plusIcon = (focused, theme, colorProp) => {
-  let color = null;
-  if (!colorProp) {
-    const mainColor = theme === "light" ? "#212121" : "#E8E8E8";
-    color = focused ? "#FF6C00" : mainColor;
-  }
+  const mainColor = theme === "light" ? "#212121" : "#E8E8E8";
+  const color = colorProp || (focused ? "#FF6C00" : mainColor);
+
   return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <g clip-path="url(#clip0_6_1193)">
             <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill=${color}/>
@@ -17,7 +15,7 @@ export const plusIcon = (focused, theme, colorProp) => {
 };
 export const closeIcon = (focused, theme, colorProp) => {
   const mainColor = theme === "light" ? "#212121" : "#E8E8E8";
-  const color = focused ? "#FF6C00" : mainColor;
+  const color = colorProp || (focused ? "#FF6C00" : mainColor);
 
   return `<svg
   width="14"
