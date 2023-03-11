@@ -14,7 +14,7 @@ import { toastConfig } from "../../../shared/components/Toast/toastConfig";
 
 import SignInForm from "./SignInForm/SignInForm";
 
-import BackgroundView from "../../../shared/components/BackgroundView/BackgroundView";
+import BackgroundViewAuth from "../../../shared/components/BackgroundViewAuth/BackgroundViewAuth";
 import LangSwitcher from "../../../shared/components/LangSwitcher/LangSwitcher";
 import SwitcherTheme from "../../../shared/components/SwitcherTheme/SwitcherTheme";
 import Loader from "../../../shared/components/Loader/Loader";
@@ -41,7 +41,7 @@ export default function SignInScreen({ navigation }) {
   };
 
   return (
-    <BackgroundView backGdColor={themeVariables[theme].bgColor}>
+    <BackgroundViewAuth backGdColor={themeVariables[theme].bgColor}>
       <View
         style={{
           alignItems: "center",
@@ -68,6 +68,6 @@ export default function SignInScreen({ navigation }) {
         {error && notify(errMessage[lang], "error", lang)}
         <Toast config={toastConfig} />
       </View>
-    </BackgroundView>
+    </BackgroundViewAuth>
   );
 }

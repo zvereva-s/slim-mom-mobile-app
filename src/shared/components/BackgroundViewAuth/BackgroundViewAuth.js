@@ -1,4 +1,4 @@
-import { View, Image, Pressable } from "react-native";
+import { Image, Pressable } from "react-native";
 import { MotiView } from "moti";
 import { Easing } from "react-native-reanimated";
 
@@ -12,7 +12,7 @@ const transition = {
   easing: Easing.inOut(Easing.ease),
 };
 
-export default function BackgroundView({ children, backGdColor }) {
+export default function BackgroundViewAuth({ children, backGdColor }) {
   return (
     <Pressable style={{ ...styles.container, backgroundColor: backGdColor }}>
       <MotiView style={styles.container}>
