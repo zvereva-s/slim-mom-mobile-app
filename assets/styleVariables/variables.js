@@ -13,6 +13,8 @@ export const light = {
 
   colorSwitcherThumbBackground: "#C5FF87",
   colorSwitcherBackground: "#fff",
+
+  backgroundSec: "#E5E5E5",
 };
 export const dark = {
   colorBackgroundForm: "rgba(255, 255, 255, 0.585)",
