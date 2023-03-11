@@ -9,7 +9,7 @@ import Icon from "../Icon/Icon";
 
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 
-const size = 45;
+const size = 35;
 const transition = {
   type: "timing",
   duration: 300,
