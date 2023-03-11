@@ -18,6 +18,8 @@ import AddProductScreen from "./screens/MainScreens/AddProductScreen/AddProductS
 import LangSwitcher from "./shared/components/LangSwitcher/LangSwitcher";
 import SwitcherTheme from "./shared/components/SwitcherTheme/SwitcherTheme";
 
+import LogoHeader from "./shared/components/LogoHeader/LogoHeader";
+
 import Icon from "./shared/components/Icon/Icon";
 
 import * as themeVariables from "../assets/styleVariables/variables";
@@ -55,26 +57,6 @@ export default function useRoute(isLogin) {
   return (
     <MainTab.Navigator
       screenOptions={{
-        headerLeft: () => (
-          <View style={{ paddingLeft: 15 }}>
-            <LangSwitcher />
-          </View>
-        ),
-        headerRight: () => (
-          <View style={{ paddingRight: 30 }}>
-            <SwitcherTheme />
-          </View>
-        ),
-        headerTitleStyle: {
-          fontFamily: "MulishBlack",
-          color: themeVariables[theme].colorText,
-          fontSize: 13,
-        },
-        headerStyle: {
-          backgroundColor: themeVariables[theme].bgColor,
-        },
-        headerTitleAlign: "center",
-        tabBarIcon: <LangSwitcher />,
         tabBarBackground: () => (
           <BlurView
             tint={isDark ? "dark" : "light"}
@@ -99,24 +81,14 @@ export default function useRoute(isLogin) {
         component={DiaryScreen}
         options={{
           title: t.mobileDiaryTitle,
-          headerShown: true,
+          headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: {
-            height: 80,
-            paddingVertical: 10,
+            height: OS === "iOS" ? 80 : 60,
+            paddingVertical: 5,
           },
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                borderWidth: 1,
-                borderColor: "transparent",
-                justifyContent: "center",
-                alignItems: "center",
-                flex: 1,
-                width: 50,
-                height: 50,
-              }}
-            >
+            <View style={styles.iconWrapper}>
               <Icon type="diary" theme={theme} focused={focused} />
             </View>
           ),
@@ -127,24 +99,14 @@ export default function useRoute(isLogin) {
         component={CalendarScreen}
         options={{
           title: t.mobileCalendarTitle,
-          headerShown: true,
+          headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: {
-            height: 80,
-            paddingVertical: 10,
+            height: OS === "iOS" ? 80 : 60,
+            paddingVertical: 5,
           },
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                borderWidth: 1,
-                borderColor: "transparent",
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                width: 50,
-                height: 50,
-              }}
-            >
+            <View style={styles.iconWrapper}>
               <Icon type="calendarMenu" theme={theme} focused={focused} />
             </View>
           ),
@@ -155,16 +117,15 @@ export default function useRoute(isLogin) {
         component={AddProductScreen}
         tabBarStyle={{
           color: themeVariables[theme].colorDark,
-          paddingHorizontal: 20,
-          paddingVertical: 20,
+          ...styles.tabBarStyle,
         }}
         options={{
           title: t.mobileAddDiaryTitle,
-          headerShown: true,
+          headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: {
-            height: 80,
-            paddingVertical: 10,
+            height: OS === "iOS" ? 80 : 60,
+            paddingVertical: 5,
           },
           tabBarIcon: ({ focused }) => {
             const mainColor = theme === "light" ? "#C5FF87" : "#9191E9";
@@ -174,10 +135,10 @@ export default function useRoute(isLogin) {
                 style={{
                   borderWidth: 1,
                   borderColor: "transparent",
-                  backgroundColor: bgColor,
-                  borderRadius: 50,
                   justifyContent: "center",
                   alignItems: "center",
+                  backgroundColor: bgColor,
+                  borderRadius: 50,
                   width: OS === "iOS" ? 40 : 50,
                   height: OS === "iOS" ? 40 : 50,
                 }}
@@ -191,3 +152,15 @@ export default function useRoute(isLogin) {
     </MainTab.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  iconWrapper: {
+    borderWidth: 1,
+    borderColor: "transparent",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 50,
+    height: 50,
+  },
+});
