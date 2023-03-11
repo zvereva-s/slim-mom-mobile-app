@@ -49,7 +49,7 @@ export const ru = {
   mobileAddDiaryTitle: "ДОБАВИТЬ ПРОДУКТ",
   addFormInput: "Введите название продукта",
   inputWeight: "Грамм",
-  g: "g",
+  g: "г",
   addProduct: "Добавить продукт",
 
   //SUMMARY
