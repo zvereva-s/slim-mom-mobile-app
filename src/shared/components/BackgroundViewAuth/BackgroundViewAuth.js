@@ -12,7 +12,7 @@ const transition = {
   easing: Easing.inOut(Easing.ease),
 };
 
-export default function BackgroundViewAuth({ children, backGdColor }) {
+export default function BackgroundViewAuth({ children, backGdColor, flex }) {
   return (
     <Pressable style={{ ...styles.container, backgroundColor: backGdColor }}>
       <MotiView style={styles.container}>
@@ -21,7 +21,7 @@ export default function BackgroundViewAuth({ children, backGdColor }) {
           source={require("../../../../assets/background/vector.png")}
         />
         <MotiView
-          style={{ flex: 1 }}
+          style={{ flex }}
           transition={transition}
           from={{
             translateY: -100,
@@ -35,7 +35,7 @@ export default function BackgroundViewAuth({ children, backGdColor }) {
             source={require("../../../../assets/background/banana.png")}
           />
           <MotiView
-            style={{ flex: 1 }}
+            style={{ flex }}
             transition={transition}
             from={{
               translateY: -100,
@@ -49,7 +49,7 @@ export default function BackgroundViewAuth({ children, backGdColor }) {
               source={require("../../../../assets/background/leaves.png")}
             />
             <MotiView
-              style={{ flex: 1 }}
+              style={{ flex }}
               transition={transition}
               from={{
                 translateY: 100,
@@ -63,7 +63,7 @@ export default function BackgroundViewAuth({ children, backGdColor }) {
                 source={require("../../../../assets/background/stawberry.png")}
               />
               <MotiView
-                style={{ flex: 1 }}
+                style={{ flex }}
                 transition={{ duration: 2500 }}
                 from={{ opacity: 0, scale: 0.1 }}
                 animate={{ opacity: 1, scale: 1 }}
