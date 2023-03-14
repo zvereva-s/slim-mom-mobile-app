@@ -51,15 +51,17 @@ export const toastConfig = {
       <Text style={s.text2}>{text2}</Text>
     </View>
   ),
-  infoToast: ({ text1, text2 }) => (
+  infoToast: ({ text2 }) => (
     <View
       style={{
         ...s.container,
         borderColor: "blue",
         backgroundColor: "rgba(0, 0, 255, 0.2)",
+        height: "auto",
+        paddingVertical: 16,
+        paddingHorizontal: 10,
       }}
     >
-      <Text style={{ ...s.text1, color: "white" }}>{text1}</Text>
       <Text style={{ ...s.text2, color: "white" }}>{text2}</Text>
     </View>
   ),
