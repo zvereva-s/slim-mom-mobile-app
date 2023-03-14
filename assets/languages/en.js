@@ -38,7 +38,7 @@ export const en = {
   high: "high",
   extreme: "extreme",
   calculatorBtn: "Start losing weight",
-  mobileCalendarTitle: "CALENDAR",
+  mobileCalculatorTitle: "CALCULATOR",
 
   //DAILY CALORIES INFO
   recomendedDaily: "Your recommended daily calorie intake is",
