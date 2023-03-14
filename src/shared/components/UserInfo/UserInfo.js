@@ -20,6 +20,7 @@ export default function UserInfo() {
   const { user, token } = useAuthState();
 
   const logout = () => {
+    console.log("click");
     dispatch(logoutRequest(token));
   };
 
