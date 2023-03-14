@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     width: "100%",
-    height: "105%",
+    height: "100%",
   },
   backGroundImage: {
     position: "absolute",
