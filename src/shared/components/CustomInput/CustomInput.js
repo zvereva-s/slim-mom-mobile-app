@@ -20,6 +20,8 @@ export default function CustomInput(props) {
     onChangeText,
     secureTextEntryStart,
     link,
+    stylesProps,
+    name,
   } = props;
 
   const [txtLink, setTxtLink] = useState(false);
@@ -50,7 +52,7 @@ export default function CustomInput(props) {
   };
   const handleChangeText = (value) => {
     if (onChangeText) {
-      onChangeText(value, keyboardType, placeholder);
+      onChangeText(value, arguments[0].name);
     }
     setInputValue(value);
     setInputActive(true);
@@ -69,6 +71,7 @@ export default function CustomInput(props) {
           ...styles.input,
           borderBottomColor: themeVariables[theme].colorLine,
           color: themeVariables[theme].colorDark,
+          ...stylesProps,
         }}
         placeholder={placeholder}
         placeholderTextColor={themeVariables[theme].colorPlaceholder}
@@ -79,6 +82,7 @@ export default function CustomInput(props) {
         onBlur={handleBlur}
         onChangeText={handleChangeText}
         secureTextEntry={secureTextEntry}
+        name={name}
       />
       {errValidation && (
         <View style={styles.error}>
