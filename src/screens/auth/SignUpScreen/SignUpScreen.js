@@ -41,7 +41,7 @@ export default function SignUpScreen({ navigation }) {
   };
 
   return (
-    <BackgroundViewAuth backGdColor={themeVariables[theme].bgColor}>
+    <BackgroundViewAuth backGdColor={themeVariables[theme].bgColor} flex={1}>
       <View
         style={{
           alignItems: "center",
