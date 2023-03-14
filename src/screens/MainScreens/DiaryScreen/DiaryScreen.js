@@ -22,7 +22,7 @@ export default function DiaryScreen() {
 
   return (
     <>
-      <LogoHeader title="diary" />
+      <LogoHeader title={t.mobileDiaryTitle} />
       <UserInfo />
       <View
         style={{
@@ -72,13 +72,3 @@ export default function DiaryScreen() {
     </>
   );
 }
-
-/*
-Diary 
-    Diary Title
-    Diary Calendar
-    Diary Add Button
-    Diary List
-
-    Summary
-*/
