@@ -101,11 +101,6 @@ export const notify = (message, type, lang) => {
     case "info":
       Toast.show({
         type: "infoToast",
-        text1: {
-          en: "Hey...we have news",
-          ua: "Хей...ми маємо новини",
-          ru: "Хей...тут есть новости",
-        }[lang],
         text2: message,
         visibilityTime: 5000,
         autoHide: true,
@@ -189,7 +184,6 @@ export const adviceActivity = ({ value }, lang) => {
 
 export const validateField = (type, value, name) => {
   let res = {};
-
   switch (type) {
     case "text":
       if (value.length < 2) {
@@ -226,10 +220,6 @@ export const validateField = (type, value, name) => {
       // eslint-disable-next-line default-case
       switch (name) {
         case "height":
-          //
-          console.log({ value });
-
-          //
           if (value.Number() < 120) {
             res = {
               message: "Height must be more 120 cm",
@@ -257,6 +247,7 @@ export const validateField = (type, value, name) => {
           }
           break;
       }
+      break;
     // eslint-disable-next-line no-fallthrough
     default:
       res = {
