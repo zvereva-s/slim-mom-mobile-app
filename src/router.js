@@ -12,7 +12,7 @@ import SignInScreen from "./screens/Auth/SignInScreen/SignInScreen";
 import SignUpScreen from "./screens/Auth/SignUpScreen/SignUpScreen";
 
 import DiaryScreen from "./screens/MainScreens/DiaryScreen/DiaryScreen";
-import CalendarScreen from "./screens/MainScreens/CalendarScreen/CalendarScreen";
+import CalculatorScreen from "./screens/MainScreens/CalculatorScreen/CalculatorScreen";
 import AddProductScreen from "./screens/MainScreens/AddProductScreen/AddProductScreen";
 
 import LangSwitcher from "./shared/components/LangSwitcher/LangSwitcher";
@@ -95,10 +95,10 @@ export default function useRoute(isLogin) {
         }}
       />
       <MainTab.Screen
-        name="Calendar"
-        component={CalendarScreen}
+        name="Calculator"
+        component={CalculatorScreen}
         options={{
-          title: t.mobileCalendarTitle,
+          title: t.mobileCalculatorTitle,
           headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: {
