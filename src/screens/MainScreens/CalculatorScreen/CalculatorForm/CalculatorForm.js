@@ -114,8 +114,10 @@ export default function CalculatorForm({ onSubmit }) {
         handleRadioInput={handleRadioInput}
         notifyStatus={true}
       />
-      <Button type="submit" text="Submit" func={handleSubmit} />
-      {error && notify(error?.message, "error", lang)}
+      <View style={{ width: "100%", alignItems: "center", marginTop: 20 }}>
+        <Button type="submit" text="Submit" func={handleSubmit} />
+      </View>
+      {error[lang] && notify(error[lang], "warning", lang)}
       <Toast config={toastConfig} />
     </View>
   );
