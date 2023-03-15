@@ -4,20 +4,19 @@ import { validateField } from "../utils/utils";
 
 export default function useForm({ initialState, onSubmit }) {
   const [state, setState] = useState({ ...initialState });
-  const [error, setError] = useState({
-    message: "",
-    type: "",
-    name: "",
-  });
-  const validate = (type, value, name) => {
-    setError(validateField(type, value, name));
+  const [error, setError] = useState();
+
+  const validate = (value, name) => {
+    setError(validateField(value, name));
   };
 
   const handleChangeTextInput = (value, name) => {
     if (name === "height" || name === "weight" || name === "age") {
-      validate("number", value, name);
-      if (error?.message) {
-        return;
+      if (value.length !== 0 && value.length >= 2) {
+        validate(value, name);
+      }
+      if (Number(value) >= 120 && value == 0) {
+        setError(null);
       }
     }
     setState((prevState) => ({
