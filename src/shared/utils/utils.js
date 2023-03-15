@@ -182,15 +182,16 @@ export const adviceActivity = ({ value }, lang) => {
   return result;
 };
 
-export const validateField = (type, value, name) => {
-  let res = {};
-  switch (type) {
-    case "text":
+export const validateField = (value, name) => {
+  let errorMessage = {};
+
+  switch (name) {
+    case "name":
       if (value.length < 2) {
-        res = {
-          message: "Min length must be more 2",
-          type: "text",
-          name: "name",
+        errorMessage = {
+          en: "Min length must be more 2",
+          ua: "Мінімальна довжина 2 літери",
+          ru: "Минимальная длина 2 буквы",
         };
       }
       break;
@@ -199,64 +200,42 @@ export const validateField = (type, value, name) => {
         /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
       );
       if (!validEmail) {
-        res = {
-          message: "Email doesn't match of example like mail@mail.com",
-          type: "email",
-          name: "email",
+        errorMessage = {
+          en: "Email doesn't match of example like mail@mail.com",
+          ua: "Email не відповідає зразку mail@mail.com",
+          ru: "Email не соответствует образцу mail@mail.com",
         };
       }
       break;
-    case "password":
-      // const validPassword = value.match(/^[a-zA-Z0-9!@#$%^&*]{6,16}$/);
-      // if (!validPassword) {
-      //   setError({
-      //     message:
-      //       "Password have to include special symbols and to be min 6 and max 16",
-      //     type: "password",
-      //   });
-      // }
-      break;
-    case "number":
-      // eslint-disable-next-line default-case
-      switch (name) {
-        case "height":
-          if (value.Number() < 120) {
-            res = {
-              message: "Height must be more 120 cm",
-              type: "text",
-              name: "height",
-            };
-          }
-          break;
-        case "weight":
-          if (value.Number() < 30) {
-            res = {
-              message: "Weight must be more 30 kg",
-              type: "text",
-              name: "weight",
-            };
-          }
-          break;
-        case "age":
-          if (value.Number() < 18) {
-            res = {
-              message: "Age must be more 18 y",
-              type: "text",
-              name: "age",
-            };
-          }
-          break;
+    case "height":
+      if (value < 120) {
+        errorMessage = {
+          en: "Height must be more 120 cm",
+          ua: "Висота має бути не нижче 120 cм",
+          ru: "Высота должна быть не ниже 120 cм",
+        };
       }
       break;
-    // eslint-disable-next-line no-fallthrough
-    default:
-      res = {
-        message: "",
-        type: "",
-        name: "",
-      };
+    case "weight":
+      if (value < 30) {
+        errorMessage = {
+          en: "Weight must be more 30 kg",
+          ua: "Вага має бути більше 30 kг",
+          ru: "Вес должен быть больше 30 kг",
+        };
+      }
+      break;
+    case "age":
+      if (value < 18) {
+        errorMessage = {
+          en: "Age must be more 18 y",
+          ua: "Вік має бути від 18 років",
+          ru: "Возвраст от 18 лет",
+        };
+      }
+      break;
   }
-  return res;
+  return errorMessage;
 };
 
 export const converToDate = (dateValue) => {
