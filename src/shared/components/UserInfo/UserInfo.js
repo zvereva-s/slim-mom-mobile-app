@@ -11,8 +11,9 @@ import LangSwitcher from "../LangSwitcher/LangSwitcher";
 import SwitcherTheme from "../SwitcherTheme/SwitcherTheme";
 
 import * as themeVariables from "../../../../assets/styleVariables/variables";
+import Icon from "../Icon/Icon";
 
-export default function UserInfo() {
+export default function UserInfo({ switchers, arrowBack }) {
   const { t } = useTranslate();
   const { theme } = useTheme();
 
@@ -46,8 +47,9 @@ export default function UserInfo() {
           justifyContent: "space-between",
         }}
       >
-        <LangSwitcher />
-        <SwitcherTheme />
+        {switchers && <LangSwitcher />}
+        {switchers && <SwitcherTheme />}
+        {arrowBack && <Icon type="arrowBack" size={18} theme={theme} />}
       </View>
       <View
         style={{
