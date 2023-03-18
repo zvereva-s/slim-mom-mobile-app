@@ -33,16 +33,13 @@ export default function CustomInput(props) {
   const { t } = useTranslate();
 
   const { errValidation, setErrValidation, handleValidateInput } =
-    useHandleValidateInput({
-      inputValue,
-      keyboardType,
-    });
+    useHandleValidateInput({ inputValue });
 
   const { setKeyboardStatus } = useKeyboardStatus();
   const { theme } = useTheme();
 
   const handleBlur = () => {
-    handleValidateInput();
+    handleValidateInput(arguments[0].name);
     setInputActive(false);
     setKeyboardStatus(false);
 
