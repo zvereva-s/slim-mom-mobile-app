@@ -21,6 +21,7 @@ export default function SignInForm({ onSubmit, navigation }) {
       <CustomInput
         placeholder={t.login}
         keyboardType="email-address"
+        name="email"
         pattern="/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/"
         onChangeText={handleChangeTextInput}
         value={email}
@@ -28,6 +29,7 @@ export default function SignInForm({ onSubmit, navigation }) {
       <CustomInput
         placeholder={t.password}
         keyboardType="visible-password"
+        name="password"
         secureTextEntryStart={true}
         link={true}
         onChangeText={handleChangeTextInput}
