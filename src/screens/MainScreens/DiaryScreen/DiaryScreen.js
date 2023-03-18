@@ -1,10 +1,13 @@
 import { View, TouchableOpacity } from "react-native";
 
+import { useState } from "react";
+
 import useTranslate from "../../../shared/hooks/useTranslate";
 import useTheme from "../../../shared/hooks/useTheme";
 
 import DiaryProductList from "./DiaryProductList/DiaryProductList";
 import SummaryList from "./SummaryList/SummaryList";
+import NotRecommendedProductsModal from "./NotRecommendedProductsModal/NotRecommendedProductsModal";
 
 import Title from "../../../shared/components/Title/Title";
 import BackgroundViewDiary from "./BackgroundViewDiary/BackgroundViewDiary";
@@ -16,14 +19,18 @@ import Link from "../../../shared/components/Link/Link";
 import { styles } from "./styles";
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 
-export default function DiaryScreen() {
+export default function DiaryScreen({ navigation }) {
   const { t } = useTranslate();
   const { theme } = useTheme();
+
+  const { navigate } = navigation;
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <LogoHeader title={t.mobileDiaryTitle} />
-      <UserInfo />
+      <UserInfo switchers={true} arrowBack={false} />
       <View
         style={{
           backgroundColor: themeVariables[theme].bgColor,
@@ -67,7 +74,11 @@ export default function DiaryScreen() {
           color={themeVariables[theme].colorDark}
         />
         <SummaryList />
-        <Link text={t.titleNotRecom} />
+        <Link text={t.titleNotRecom} func={() => setModalVisible(true)} />
+        <NotRecommendedProductsModal
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
       </BackgroundViewDiary>
     </>
   );
