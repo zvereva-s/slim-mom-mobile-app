@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
 import useTheme from "../../hooks/useTheme";
 
@@ -8,7 +8,8 @@ export default function Link({ text, func }) {
   const { theme } = useTheme();
 
   return (
-    <View
+    <TouchableOpacity
+      activeOpacity={0.8}
       style={{ alignItems: "flex-end", justifyContent: "center" }}
       onPress={func}
     >
@@ -22,6 +23,6 @@ export default function Link({ text, func }) {
       >
         {text}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
