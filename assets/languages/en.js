@@ -51,6 +51,7 @@ export const en = {
   inputWeight: "Grams",
   g: "g",
   addProduct: "Add product",
+  notFoundText: "Not Found Product",
 
   //SUMMARY
   summaryTitle: "Summary for",
@@ -73,4 +74,14 @@ export const en = {
   //NOTIFICATIONS
   infoToocmpleteCalculator:
     "Please, complete calculator form. It'll count your daily rate",
+
+  //ERRORS
+
+  emailErrorNotIncludeSign: "Email has to include @",
+  emailErrorNotMatch: "Email has to be like 'mail@mail.com'",
+  passwordErrorLength: "Password length must be more 6...",
+  passwordErrorNotMatch: "Password not match pattern like Gkh$20Fh@",
+  heightError: "Height must be more 120 cm",
+  ageError: "Age must be more 18 y.o",
+  weightError: "Weight must be more 5 gram",
 };

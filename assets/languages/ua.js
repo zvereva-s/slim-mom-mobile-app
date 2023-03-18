@@ -51,6 +51,7 @@ export const ua = {
   inputWeight: "Грам",
   g: "г",
   addProduct: "Додати продукт",
+  notFoundText: "Продукт не знайдено",
 
   //SUMMARY
   summaryTitle: "Підсумки на ",
@@ -74,4 +75,14 @@ export const ua = {
   //NOTIFICATIONS
   infoToocmpleteCalculator:
     "Будь ласка, заповніть форму калькулятора. Він розрахує вашу добову норму",
+
+  //ERRORS
+
+  emailErrorNotIncludeSign: "Email має включати @",
+  emailErrorNotMatch: "Email не відповідає шаблону mail@mail.com",
+  passwordErrorLength: "Пароль має бути довшим 6 символів",
+  passwordErrorNotMatch: "Пароль не відповідає шаблону Gkh$20Fh@",
+  heightError: "Висота має бути не нижче 120 cм",
+  ageError: "Вік має бути від 18 років",
+  weightError: "Вага має бути вище 5 грам",
 };

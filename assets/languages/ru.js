@@ -51,6 +51,7 @@ export const ru = {
   inputWeight: "Грамм",
   g: "г",
   addProduct: "Добавить продукт",
+  notFoundText: "Продукт не найден",
 
   //SUMMARY
   summaryTitle: "Итоги на ",
@@ -74,4 +75,14 @@ export const ru = {
   //NOTIFICATIONS
   infoToocmpleteCalculator:
     "Пожалуйста, заполните форму калькулятора. Он подсчитает вашу дневную норму",
+
+  //ERRORS
+
+  emailErrorNotIncludeSign: "Email должен включать @",
+  emailErrorNotMatch: "Email не соответствует шаблону 'mail@mail.com'",
+  passwordErrorLength: "Пароль должен быть длинее 6 символов",
+  passwordErrorNotMatch: "Пароль не соответствует паттерну Gkh$20Fh@",
+  heightError: "Высота должна быть не ниже 120 cм",
+  ageError: "Возвраст от 18 лет",
+  weightError: "Вес должен быть выше 5 грамм",
 };
