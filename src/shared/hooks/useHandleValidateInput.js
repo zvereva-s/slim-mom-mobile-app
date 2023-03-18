@@ -1,29 +1,55 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default function useHandleValidateInput({ inputValue, keyboardType }) {
+import useTranslate from "./useTranslate";
+
+export default function useHandleValidateInput({ inputValue }) {
+  const { t } = useTranslate();
+
   const [errValidation, setErrValidation] = useState(null);
 
-  const handleValidateInput = () => {
+  const handleValidateInput = (name) => {
     if (inputValue.length < 1) {
       setErrValidation("Too short...");
     }
-    switch (keyboardType) {
+    switch (name) {
       case "email":
         if (!inputValue.includes("@")) {
-          setErrValidation("Email has to include @");
+          setErrValidation(t.emailErrorNotIncludeSign);
         } else if (
           !inputValue.match(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/)
         ) {
-          setErrValidation('Email has to be like "mail@mail.com"');
+          setErrValidation(t.emailErrorNotMatch);
         } else {
           setErrValidation(null);
         }
         break;
       case "password": {
         if (inputValue.length < 6) {
-          setErrValidation("Password length must be more 6...");
+          setErrValidation(t.passwordErrorLength);
         } else if (!inputValue.match(/^[a-zA-Z0-9!@#$%^&*]{6,16}$/)) {
-          setErrValidation("Password not match pattern like Gkh$20Fh@");
+          setErrValidation(t.passwordErrorNotMatch);
+        } else {
+          setErrValidation(null);
+        }
+        break;
+      }
+      case "height": {
+        if (inputValue != 0 && inputValue < 120) {
+          setErrValidation(t.heightError);
+        }
+        break;
+      }
+      case "age": {
+        if (inputValue != 0 && inputValue < 18) {
+          setErrValidation(t.ageError);
+        } else {
+          setErrValidation(null);
+        }
+        break;
+      }
+      case "weight": {
+        if (inputValue != 0 && inputValue < 5) {
+          setErrValidation(t.weightError);
         } else {
           setErrValidation(null);
         }
