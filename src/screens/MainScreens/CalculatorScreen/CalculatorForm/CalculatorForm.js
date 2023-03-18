@@ -1,5 +1,3 @@
-import Toast from "react-native-toast-message";
-
 import { View } from "react-native";
 
 import useForm from "../../../../shared/hooks/useForm";
@@ -10,26 +8,18 @@ import CustomInput from "../../../../shared/components/CustomInput/CustomInput";
 import RadioInput from "../../../../shared/components/RadioInput/RadioInput";
 import Button from "../../../../shared/components/Button/Button";
 
-import { toastConfig } from "../../../../shared/components/Toast/toastConfig";
-import { notify } from "../../../../shared/utils/utils";
-
 import { initialState } from "./initialState";
 import * as themeVariables from "../../../../../assets/styleVariables/variables";
 
 export default function CalculatorForm({ onSubmit }) {
-  const { t, lang } = useTranslate();
+  const { t } = useTranslate();
   const { theme } = useTheme();
 
-  const {
-    state,
-    handleSubmit,
-    handleRadioInput,
-    handleChangeTextInput,
-    error,
-  } = useForm({
-    initialState,
-    onSubmit,
-  });
+  const { state, handleSubmit, handleRadioInput, handleChangeTextInput } =
+    useForm({
+      initialState,
+      onSubmit,
+    });
 
   const { height, age, weight, desiredWeight } = state;
 
@@ -48,11 +38,11 @@ export default function CalculatorForm({ onSubmit }) {
     >
       <CustomInput
         placeholder={t.height}
-        value={height}
         name="height"
         onChangeText={handleChangeTextInput}
         pattern="/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/"
         stylesProps={{ paddingLeft: 0, marginTop: 0 }}
+        value={height}
       />
       <CustomInput
         placeholder={t.age}
@@ -115,10 +105,8 @@ export default function CalculatorForm({ onSubmit }) {
         notifyStatus={true}
       />
       <View style={{ width: "100%", alignItems: "center", marginTop: 20 }}>
-        <Button type="submit" text="Submit" func={handleSubmit} />
+        <Button type="submit" text={t.calculatorBtn} func={handleSubmit} />
       </View>
-      {error[lang] && notify(error[lang], "warning", lang)}
-      <Toast config={toastConfig} />
     </View>
   );
 }
