@@ -24,12 +24,14 @@ export default function SignUpForm({ onSubmit, navigation }) {
         placeholder={t.name}
         value={name}
         keyboardType="default"
+        name="name"
         pattern="/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/"
         onChangeText={handleChangeTextInput}
       />
       <CustomInput
         placeholder={t.email}
         value={email}
+        name="email"
         keyboardType="email-address"
         pattern="/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/"
         onChangeText={handleChangeTextInput}
@@ -37,6 +39,7 @@ export default function SignUpForm({ onSubmit, navigation }) {
       <CustomInput
         placeholder={t.password}
         value={password}
+        name="password"
         keyboardType="visible-password"
         secureTextEntryStart={true}
         link={true}
