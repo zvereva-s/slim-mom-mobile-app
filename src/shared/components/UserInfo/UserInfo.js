@@ -13,7 +13,7 @@ import SwitcherTheme from "../SwitcherTheme/SwitcherTheme";
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 import Icon from "../Icon/Icon";
 
-export default function UserInfo({ switchers, arrowBack }) {
+export default function UserInfo({ switchers, arrowBack, navigate }) {
   const { t } = useTranslate();
   const { theme } = useTheme();
 
@@ -21,7 +21,6 @@ export default function UserInfo({ switchers, arrowBack }) {
   const { user, token } = useAuthState();
 
   const logout = () => {
-    console.log("click");
     dispatch(logoutRequest(token));
   };
 
@@ -49,7 +48,16 @@ export default function UserInfo({ switchers, arrowBack }) {
       >
         {switchers && <LangSwitcher />}
         {switchers && <SwitcherTheme />}
-        {arrowBack && <Icon type="arrowBack" size={18} theme={theme} />}
+        {arrowBack && (
+          <TouchableOpacity activeOpacity={0.8}>
+            <Icon
+              type="arrowBack"
+              size={18}
+              theme={theme}
+              onPress={() => navigate("Add Product")}
+            />
+          </TouchableOpacity>
+        )}
       </View>
       <View
         style={{
