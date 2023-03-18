@@ -3,10 +3,10 @@ import { View, Text } from "react-native";
 import useTheme from "../../hooks/useTheme";
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 
-export default function Title({ text, color, size }) {
+export default function Title({ text, color, size, stylesProps }) {
   const { theme } = useTheme();
   return (
-    <View style={{ alignItems: "center" }}>
+    <View style={{ alignItems: "center", ...stylesProps }}>
       <Text
         style={{
           fontSize: size,

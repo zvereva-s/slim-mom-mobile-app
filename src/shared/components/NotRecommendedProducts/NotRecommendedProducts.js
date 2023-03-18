@@ -35,11 +35,12 @@ export default function NotRecommendedProducts() {
   const { theme } = useTheme();
 
   return (
-    <View>
+    <View style={{ width: "100%", paddingVertical: 10 }}>
       <Title
         text={t.titleNotRecom}
         size={20}
         color={themeVariables[theme].colorDark}
+        stylesProps={{ marginBottom: 20 }}
       />
       <FlatList
         data={data}
@@ -47,15 +48,15 @@ export default function NotRecommendedProducts() {
         renderItem={({ item }) => (
           <View
             style={{
-              width: "100%",
-              flexDirection: "row",
               paddingHorizontal: 10,
-
-              alignItems: "center",
-              justifyContent: "space-around",
             }}
           >
-            <Text style={{ color: themeVariables[theme].colorDark }}>
+            <Text
+              style={{
+                fontFamily: "MulishRegular",
+                color: themeVariables[theme].colorDark,
+              }}
+            >
               {item.product}
             </Text>
           </View>
