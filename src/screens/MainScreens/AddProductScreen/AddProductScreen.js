@@ -1,23 +1,33 @@
 import { View } from "react-native";
+import { useDispatch } from "react-redux";
+
+import { addProductRequest } from "../../../redux/diary/diary-operations";
+
+import AddProductForm from "./AddProductForm/AddProductForm";
 
 import LogoHeader from "../../../shared/components/LogoHeader/LogoHeader";
 import UserInfo from "../../../shared/components/UserInfo/UserInfo";
 import Container from "../../../shared/components/Container/Container";
-import CustomInput from "../../../shared/components/CustomInput/CustomInput";
-import Button from "../../../shared/components/Button/Button";
 
 import useTranslate from "../../../shared/hooks/useTranslate";
 import useTheme from "../../../shared/hooks/useTheme";
 
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 
-export default function AddProductScreen() {
+export default function AddProductScreen({ navigation }) {
   const { t } = useTranslate();
   const { theme } = useTheme();
+  const dispatch = useDispatch();
+  const { navigate } = navigation;
+
+  const onSubmit = (data) => {
+    dispatch(addProductRequest(data));
+  };
+
   return (
     <>
       <LogoHeader title={t.mobileAddDiaryTitle} />
-      <UserInfo switchers={false} arrowBack={true} />
+      <UserInfo switchers={false} arrowBack={true} navigate={navigate} />
       <View
         style={{
           backgroundColor: themeVariables[theme].bgColor,
@@ -26,15 +36,7 @@ export default function AddProductScreen() {
         }}
       >
         <Container>
-          <View style={{ width: "100%", marginTop: 100, alignItems: "center" }}>
-            <CustomInput placeholder={t.addFormInput} name="name" />
-            <CustomInput placeholder={t.inputWeight} name="weight" />
-            <View
-              style={{ width: "100%", marginTop: 20, alignItems: "center" }}
-            >
-              <Button type="submit" text={t.addProduct} />
-            </View>
-          </View>
+          <AddProductForm onSubmit={onSubmit} />
         </Container>
       </View>
     </>
