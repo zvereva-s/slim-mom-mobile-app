@@ -23,7 +23,7 @@ export default function CalculatorScreen() {
   return (
     <>
       <LogoHeader title={t.mobileCalculatorTitle} />
-      <UserInfo />
+      <UserInfo switchers={true} arrowBack={false} />
       <View
         style={{
           backgroundColor: themeVariables[theme].bgColor,
