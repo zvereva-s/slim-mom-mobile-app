@@ -1,27 +1,19 @@
 import { useState } from "react";
 
-import { validateField } from "../utils/utils";
-
 export default function useForm({ initialState, onSubmit }) {
   const [state, setState] = useState({ ...initialState });
-  const [error, setError] = useState();
-
-  const validate = (value, name) => {
-    setError(validateField(value, name));
-  };
 
   const handleChangeTextInput = (value, name) => {
-    if (name === "height" || name === "weight" || name === "age") {
-      if (value.length !== 0 && value.length >= 2) {
-        validate(value, name);
-      }
-      if (Number(value) >= 120 && value == 0) {
-        setError(null);
-      }
-    }
     setState((prevState) => ({
       ...prevState,
-      [name]: value.toLowerCase(),
+      [name]: String(value).toLowerCase(),
+    }));
+  };
+
+  const handleSelectInput = (value, name) => {
+    setState((prevState) => ({
+      ...prevState,
+      [name]: String(value).toLowerCase(),
     }));
   };
 
@@ -45,10 +37,9 @@ export default function useForm({ initialState, onSubmit }) {
 
   return {
     state,
-    error,
-    validate,
     handleChangeTextInput,
     handleSubmit,
     handleRadioInput,
+    handleSelectInput,
   };
 }
