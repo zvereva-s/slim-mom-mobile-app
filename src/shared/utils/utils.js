@@ -182,62 +182,6 @@ export const adviceActivity = ({ value }, lang) => {
   return result;
 };
 
-export const validateField = (value, name) => {
-  let errorMessage = {};
-
-  switch (name) {
-    case "name":
-      if (value.length < 2) {
-        errorMessage = {
-          en: "Min length must be more 2",
-          ua: "Мінімальна довжина 2 літери",
-          ru: "Минимальная длина 2 буквы",
-        };
-      }
-      break;
-    case "email":
-      const validEmail = value.match(
-        /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
-      );
-      if (!validEmail) {
-        errorMessage = {
-          en: "Email doesn't match of example like mail@mail.com",
-          ua: "Email не відповідає зразку mail@mail.com",
-          ru: "Email не соответствует образцу mail@mail.com",
-        };
-      }
-      break;
-    case "height":
-      if (value < 120) {
-        errorMessage = {
-          en: "Height must be more 120 cm",
-          ua: "Висота має бути не нижче 120 cм",
-          ru: "Высота должна быть не ниже 120 cм",
-        };
-      }
-      break;
-    case "weight":
-      if (value < 30) {
-        errorMessage = {
-          en: "Weight must be more 30 kg",
-          ua: "Вага має бути більше 30 kг",
-          ru: "Вес должен быть больше 30 kг",
-        };
-      }
-      break;
-    case "age":
-      if (value < 18) {
-        errorMessage = {
-          en: "Age must be more 18 y",
-          ua: "Вік має бути від 18 років",
-          ru: "Возвраст от 18 лет",
-        };
-      }
-      break;
-  }
-  return errorMessage;
-};
-
 export const converToDate = (dateValue) => {
   const year = dateValue.getFullYear();
   const month =
