@@ -49,6 +49,7 @@ export default function NotRecommendedProducts() {
           <View
             style={{
               paddingHorizontal: 10,
+              marginVertical: 5,
             }}
           >
             <Text

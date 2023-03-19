@@ -1,4 +1,4 @@
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Modal, StyleSheet, View } from "react-native";
 
 import useTheme from "../../../../shared/hooks/useTheme";
 
@@ -31,7 +31,11 @@ export default function NotRecommendedProductsModal({
           }}
         >
           <NotRecommendedProducts />
-          <Button text="OK" func={() => setModalVisible(!modalVisible)} />
+          <Button
+            text="OK"
+            func={() => setModalVisible(!modalVisible)}
+            stylesProps={{ marginTop: 20 }}
+          />
         </View>
       </View>
     </Modal>
@@ -45,6 +49,7 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
+    width: "90%",
     margin: 20,
     borderRadius: 20,
     padding: 35,
