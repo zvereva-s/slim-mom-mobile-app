@@ -5,9 +5,12 @@ import { useState } from "react";
 import useTranslate from "../../../shared/hooks/useTranslate";
 import useTheme from "../../../shared/hooks/useTheme";
 
+import { converToDate } from "../../../shared/utils/utils";
+
 import DiaryProductList from "./DiaryProductList/DiaryProductList";
 import SummaryList from "./SummaryList/SummaryList";
 import NotRecommendedProductsModal from "./NotRecommendedProductsModal/NotRecommendedProductsModal";
+import CalendarModal from "./CalendarModal/CalendarModal";
 
 import Title from "../../../shared/components/Title/Title";
 import BackgroundViewDiary from "./BackgroundViewDiary/BackgroundViewDiary";
@@ -26,7 +29,12 @@ export default function DiaryScreen({ navigation }) {
   const { navigate } = navigation;
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [calendarVisible, setCalendarVisible] = useState(false);
 
+  const { year, month, day } = converToDate(new Date());
+  const [date, setDate] = useState(`${year}-${month}-${day}`);
+
+  console.log({ date });
   return (
     <>
       <LogoHeader title={t.mobileDiaryTitle} />
@@ -45,10 +53,18 @@ export default function DiaryScreen({ navigation }) {
             color={themeVariables[theme].colorDark}
             size={30}
           />
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => setCalendarVisible(!calendarVisible)}
+          >
             <Icon type="calendar" size={20} theme={theme} />
           </TouchableOpacity>
         </View>
+        <CalendarModal
+          calendarVisible={calendarVisible}
+          setCalendarVisible={setCalendarVisible}
+          setDate={setDate}
+        />
         <DiaryProductList />
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity
