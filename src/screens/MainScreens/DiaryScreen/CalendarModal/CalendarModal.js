@@ -1,5 +1,5 @@
 import { Calendar } from "react-native-calendars";
-import { Modal, StyleSheet, View } from "react-native";
+import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import useTheme from "../../../../shared/hooks/useTheme";
 
@@ -20,17 +20,20 @@ export default function CalendarModal({
         setCalendarVisible(!calendarVisible);
       }}
     >
-      <View
+      <TouchableOpacity
         style={{
           ...styles.centeredView,
           backgroundColor: themeVariables[theme].colorBackgroundForm,
         }}
+        activeOpacity={0.8}
+        onPress={() => setCalendarVisible(!calendarVisible)}
       >
         <View style={styles.modalView}>
           <Calendar
             onDayPress={({ dateString }) => {
               setCalendarVisible(!calendarVisible);
-              setDate(dateString);
+              const date = dateString.split("-").reverse().join(".");
+              setDate(date);
             }}
             style={{
               paddingVertical: 10,
@@ -61,7 +64,7 @@ export default function CalendarModal({
             }}
           />
         </View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   );
 }

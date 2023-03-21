@@ -32,9 +32,8 @@ export default function DiaryScreen({ navigation }) {
   const [calendarVisible, setCalendarVisible] = useState(false);
 
   const { year, month, day } = converToDate(new Date());
-  const [date, setDate] = useState(`${year}-${month}-${day}`);
+  const [date, setDate] = useState(`${day}.${month}.${year}`);
 
-  console.log({ date });
   return (
     <>
       <LogoHeader title={t.mobileDiaryTitle} />
@@ -49,7 +48,7 @@ export default function DiaryScreen({ navigation }) {
       >
         <View style={{ ...styles.calendar, paddingTop: 20 }}>
           <Title
-            text="02.02.2022"
+            text={date}
             color={themeVariables[theme].colorDark}
             size={30}
           />
@@ -85,7 +84,7 @@ export default function DiaryScreen({ navigation }) {
       </View>
       <BackgroundViewDiary backGdColor={themeVariables[theme].backgroundSec}>
         <Title
-          text={`${t.summaryTitle} 02/02/2022`}
+          text={`${t.summaryTitle} ${date}`}
           size={20}
           color={themeVariables[theme].colorDark}
         />
