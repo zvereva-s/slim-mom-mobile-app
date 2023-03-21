@@ -13,13 +13,9 @@ export default function Main() {
   const dispatch = useDispatch();
   // const { isLogin } = useAuthState();
 
-  const isLogin = true;
+  const isLogin = false;
 
   const routing = useRoute(isLogin);
-
-  useEffect(() => {
-    dispatch(getCurrentRequest());
-  }, [dispatch]);
 
   return (
     <NavigationContainer>

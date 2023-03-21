@@ -3,9 +3,10 @@ import "expo-dev-menu";
 import "react-native-reanimated";
 import "react-native-gesture-handler";
 
-import { LogBox, Text } from "react-native";
+import { Text } from "react-native";
 
 import * as Font from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
 import { Provider } from "react-redux";
 import { ThemeProvider } from "./src/shared/providers/ThemeProvider";

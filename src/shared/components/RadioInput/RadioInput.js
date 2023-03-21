@@ -1,3 +1,5 @@
+import Toast from "react-native-toast-message";
+
 import { useState } from "react";
 import { MotiView } from "moti";
 import {
@@ -12,6 +14,7 @@ import useTheme from "../../hooks/useTheme";
 import useTranslate from "../../hooks/useTranslate";
 
 import { notify, adviceActivity } from "../../utils/utils";
+import { toastConfig } from "../Toast/toastConfig";
 
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 
@@ -84,6 +87,7 @@ export default function RadioInput({
               </Text>
             </TouchableOpacity>
           ))}
+          <Toast config={toastConfig} />
         </View>
       </Pressable>
     </>

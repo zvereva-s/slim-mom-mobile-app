@@ -26,8 +26,6 @@ export default function DiaryScreen({ navigation }) {
   const { t } = useTranslate();
   const { theme } = useTheme();
 
-  const { navigate } = navigation;
-
   const [modalVisible, setModalVisible] = useState(false);
   const [calendarVisible, setCalendarVisible] = useState(false);
 
@@ -67,6 +65,7 @@ export default function DiaryScreen({ navigation }) {
         <DiaryProductList />
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity
+            onPress={() => navigation.navigate("Add Product")}
             activeOpacity={0.8}
             style={{
               alignItems: "center",
@@ -78,7 +77,7 @@ export default function DiaryScreen({ navigation }) {
               marginTop: 15,
             }}
           >
-            <Icon type="plus" size="20" />
+            <Icon type="plus" size={20} />
           </TouchableOpacity>
         </View>
       </View>

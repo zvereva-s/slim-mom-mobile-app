@@ -49,7 +49,10 @@ export default function UserInfo({ switchers, arrowBack, navigate }) {
         {switchers && <LangSwitcher />}
         {switchers && <SwitcherTheme />}
         {arrowBack && (
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigate("Diary")}
+          >
             <Icon
               type="arrowBack"
               size={18}

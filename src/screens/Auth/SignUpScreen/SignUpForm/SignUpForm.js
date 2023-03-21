@@ -1,4 +1,4 @@
-import { TouchableOpacity, View, Text } from "react-native";
+import { View } from "react-native";
 
 import useForm from "../../../../shared/hooks/useForm";
 import useTranslate from "../../../../shared/hooks/useTranslate";
@@ -10,7 +10,6 @@ import initialState from "./initialState";
 
 export default function SignUpForm({ onSubmit, navigation }) {
   const { t } = useTranslate();
-  const { navigate } = navigation;
 
   const { state, handleChangeTextInput, handleSubmit } = useForm({
     initialState,
@@ -50,15 +49,12 @@ export default function SignUpForm({ onSubmit, navigation }) {
           <Button text={t.signUpBtn} func={handleSubmit} />
         </View>
         <View style={{ width: "100%", marginTop: 20 }}>
-          <Button text={t.signInBtn} type="disabled" />
+          <Button
+            text={t.signInBtn}
+            type="disabled"
+            navigate={() => navigation.navigate("Sign In")}
+          />
         </View>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={{ marginTop: 20 }}
-          onPress={() => navigate("Sign In")}
-        >
-          <Text>Have acccount? Sign In</Text>
-        </TouchableOpacity>
       </View>
     </>
   );

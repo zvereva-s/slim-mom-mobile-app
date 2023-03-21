@@ -39,11 +39,12 @@ export default function SignInForm({ onSubmit, navigation }) {
         <View style={{ marginTop: 60 }}>
           <Button text={t.signInBtn} func={handleSubmit} />
         </View>
-        <View
-          style={{ width: "100%", marginTop: 20 }}
-          onPress={navigation.navigate("Sign Up")}
-        >
-          <Button text={t.signUpBtn} type="disabled" />
+        <View style={{ width: "100%", marginTop: 20 }}>
+          <Button
+            text={t.signUpBtn}
+            type="disabled"
+            navigate={() => navigation.navigate("Sign Up")}
+          />
         </View>
       </View>
     </>
