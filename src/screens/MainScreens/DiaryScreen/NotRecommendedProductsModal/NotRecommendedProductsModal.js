@@ -1,4 +1,4 @@
-import { Modal, StyleSheet, View } from "react-native";
+import { Modal, StyleSheet, View, TouchableOpacity } from "react-native";
 
 import useTheme from "../../../../shared/hooks/useTheme";
 
@@ -22,7 +22,10 @@ export default function NotRecommendedProductsModal({
         setModalVisible(!modalVisible);
       }}
     >
-      <View style={styles.centeredView}>
+      <TouchableOpacity
+        style={styles.centeredView}
+        onPress={() => setModalVisible(!modalVisible)}
+      >
         <View
           style={{
             ...styles.modalView,
@@ -37,7 +40,7 @@ export default function NotRecommendedProductsModal({
             stylesProps={{ marginTop: 20 }}
           />
         </View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   );
 }
