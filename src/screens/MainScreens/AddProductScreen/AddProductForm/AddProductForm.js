@@ -10,12 +10,7 @@ import DropdownProductList from "./DropdownProductList/DropdownProductList";
 
 import { initialState } from "./initialState";
 
-const list = [
-  { key: 1, name: { en: "Chicken", ua: "Курка", ru: "Курица" } },
-  { key: 2, name: { en: "Apple", ua: "Яблуко", ru: "Яблоко" } },
-];
-
-export default function AddProductForm({ onSubmit }) {
+export default function AddProductForm({ onSubmit, foodListForChoose }) {
   const { t } = useTranslate();
   const { handleSubmit, handleSelectInput, handleChangeTextInput, state } =
     useForm({
@@ -23,9 +18,13 @@ export default function AddProductForm({ onSubmit }) {
       onSubmit,
     });
   const { weight } = state;
+
   return (
     <View style={{ width: "100%", marginTop: 100, alignItems: "center" }}>
-      <DropdownProductList list={list} handleSelectInput={handleSelectInput} />
+      <DropdownProductList
+        list={foodListForChoose}
+        handleSelectInput={handleSelectInput}
+      />
       <CustomInput
         placeholder={t.inputWeight}
         name="weight"
