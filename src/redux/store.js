@@ -1,13 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {
-  persistStore,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
 
 import rootReducer from "./root-reducer";
 
@@ -16,20 +7,13 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [
-          FLUSH,
-          REHYDRATE,
-          PAUSE,
-          PERSIST,
-          PURGE,
-          REGISTER,
-          "persist/PERSIST",
-          "persist/REHYDRATE",
-          "diary/addDateDiary",
+        ignoredActions: ["diary/addDateDiary"],
+        ignoredPaths: [
+          "diary.date",
+          "auth.error",
+          "diary.error",
+          "healthyDataState.error",
         ],
-        ignoredPaths: ["diary.date", "auth.error"],
       },
     }),
 });
-
-export const persistor = persistStore(store);
