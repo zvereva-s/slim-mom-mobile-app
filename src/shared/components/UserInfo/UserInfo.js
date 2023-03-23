@@ -84,7 +84,7 @@ export default function UserInfo({ switchers, arrowBack, navigate }) {
         >
           |
         </Text>
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity activeOpacity={0.8} onPress={logout}>
           <Text
             style={{
               ...styles.userText,
