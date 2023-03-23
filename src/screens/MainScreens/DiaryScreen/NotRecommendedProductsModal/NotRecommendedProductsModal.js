@@ -10,6 +10,7 @@ import * as themeVariables from "../../../../../assets/styleVariables/variables"
 export default function NotRecommendedProductsModal({
   modalVisible,
   setModalVisible,
+  notAllowedProducts,
 }) {
   const { theme } = useTheme();
 
@@ -33,7 +34,7 @@ export default function NotRecommendedProductsModal({
             shadowColor: themeVariables[theme].colorBoxShadowOrange,
           }}
         >
-          <NotRecommendedProducts />
+          <NotRecommendedProducts list={notAllowedProducts} />
           <Button
             text="OK"
             func={() => setModalVisible(!modalVisible)}
