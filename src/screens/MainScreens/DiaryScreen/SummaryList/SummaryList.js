@@ -9,7 +9,7 @@ export default function SummaryList({
   left,
   consumed,
   dailyRate,
-  procentOfNorm,
+  procentOfDayNorm,
 }) {
   const { t } = useTranslate();
   const { theme } = useTheme();
@@ -37,19 +37,25 @@ export default function SummaryList({
     <View style={styles.container}>
       <View style={styles.line}>
         <Text style={styles.text}>{t.left}</Text>
-        <Text style={styles.text}>000 {t.kcal}</Text>
+        <Text style={styles.text}>
+          {left} {t.kcal}
+        </Text>
       </View>
       <View style={styles.line}>
         <Text style={styles.text}>{t.consumed}</Text>
-        <Text style={styles.text}>000 {t.kcal}</Text>
+        <Text style={styles.text}>
+          {consumed} {t.kcal}
+        </Text>
       </View>
       <View style={styles.line}>
         <Text style={styles.text}>{t.dailyRate}</Text>
-        <Text style={styles.text}>000 {t.kcal}</Text>
+        <Text style={styles.text}>
+          {dailyRate} {t.kcal}
+        </Text>
       </View>
       <View style={styles.line}>
         <Text style={styles.text}>{t.procentOfNorm}</Text>
-        <Text style={styles.text}>000 {t.kcal}</Text>
+        <Text style={styles.text}>{procentOfDayNorm} %</Text>
       </View>
     </View>
   );
