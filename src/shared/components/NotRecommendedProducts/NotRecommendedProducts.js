@@ -3,36 +3,16 @@ import { Text, View, FlatList } from "react-native";
 import useTranslate from "../../hooks/useTranslate";
 import useTheme from "../../hooks/useTheme";
 
+import { makeUniqueRandomNotRecommendedProductList } from "../../utils/utils";
+
 import Title from "../Title/Title";
 
 import * as themeVariables from "../../../../assets/styleVariables/variables";
 
-const data = [
-  {
-    id: 1,
-    product: "Product 1",
-  },
-  {
-    id: 2,
-    product: "Product 2",
-  },
-  {
-    id: 3,
-    product: "Product 3",
-  },
-  {
-    id: 4,
-    product: "Product 4",
-  },
-  {
-    id: 5,
-    product: "Product 5",
-  },
-];
-
-export default function NotRecommendedProducts() {
+export default function NotRecommendedProducts({ list }) {
   const { t } = useTranslate();
   const { theme } = useTheme();
+  const data = makeUniqueRandomNotRecommendedProductList(list);
 
   return (
     <View style={{ width: "100%", paddingVertical: 10 }}>
@@ -44,7 +24,7 @@ export default function NotRecommendedProducts() {
       />
       <FlatList
         data={data}
-        keyExtractor={({ id }) => id}
+        keyExtractor={(_, i) => i}
         renderItem={({ item }) => (
           <View
             style={{
@@ -58,7 +38,7 @@ export default function NotRecommendedProducts() {
                 color: themeVariables[theme].colorDark,
               }}
             >
-              {item.product}
+              {item}
             </Text>
           </View>
         )}
