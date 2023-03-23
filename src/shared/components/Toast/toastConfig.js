@@ -32,7 +32,7 @@ export const toastConfig = {
       style={{
         ...s.container,
         borderColor: "red",
-        backgroundColor: "rgba(255, 0, 0, 0.2)",
+        backgroundColor: "rgba(255, 0, 0, 0.7)",
       }}
     >
       <Text style={s.text1}>{text1}</Text>
@@ -44,7 +44,7 @@ export const toastConfig = {
       style={{
         ...s.container,
         borderColor: "#FC842D",
-        backgroundColor: "rgba(252, 132, 45, 0.2)",
+        backgroundColor: "rgba(252, 132, 45, 0.7)",
       }}
     >
       <Text style={s.text1}>{text1}</Text>
@@ -56,7 +56,7 @@ export const toastConfig = {
       style={{
         ...s.container,
         borderColor: "blue",
-        backgroundColor: "rgba(0, 0, 255, 0.2)",
+        backgroundColor: "rgba(0, 0, 255, 0.7)",
         height: "auto",
         paddingVertical: 16,
         paddingHorizontal: 10,
@@ -70,7 +70,7 @@ export const toastConfig = {
       style={{
         ...s.container,
         borderColor: "green",
-        backgroundColor: "rgba(0, 128, 0, 0.3)",
+        backgroundColor: "rgba(0, 128, 0, 0.7)",
       }}
     >
       <Text style={s.text1}>{text1}</Text>
