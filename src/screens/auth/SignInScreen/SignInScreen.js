@@ -32,12 +32,7 @@ export default function SignInScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    const obj = {
-      email: data["email-address"].toLowerCase(),
-      password: data["visible-password"].toLowerCase(),
-    };
-
-    dispatch(signinRequest(obj));
+    dispatch(signinRequest(data));
   };
 
   return (
