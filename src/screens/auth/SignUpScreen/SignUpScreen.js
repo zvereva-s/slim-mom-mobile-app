@@ -32,12 +32,7 @@ export default function SignUpScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    const obj = {
-      name: data.default,
-      email: data["email-address"],
-      password: data["visible-password"],
-    };
-    dispatch(signupRequest(obj));
+    dispatch(signupRequest(data));
   };
 
   return (
