@@ -85,4 +85,5 @@ export const ua = {
   heightError: "Висота має бути не нижче 120 cм",
   ageError: "Вік має бути від 18 років",
   weightError: "Вага має бути вище 5 грам",
+  emptyDiaryList: "Ваш список ще порожній",
 };

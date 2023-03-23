@@ -84,4 +84,5 @@ export const en = {
   heightError: "Height must be more 120 cm",
   ageError: "Age must be more 18 y.o",
   weightError: "Weight must be more 5 gram",
+  emptyDiaryList: "Your list is empty",
 };

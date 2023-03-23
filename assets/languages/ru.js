@@ -85,4 +85,5 @@ export const ru = {
   heightError: "Высота должна быть не ниже 120 cм",
   ageError: "Возвраст от 18 лет",
   weightError: "Вес должен быть выше 5 грамм",
+  emptyDiaryList: "Ваш список еще пустой",
 };
